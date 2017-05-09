@@ -16,7 +16,6 @@ public class FileLogger implements Logger {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
