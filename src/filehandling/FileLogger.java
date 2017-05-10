@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Created by Emil on 2017-05-09.
+ * A logging class that logs to a file.
  */
 public class FileLogger implements Logger {
 
@@ -12,7 +12,7 @@ public class FileLogger implements Logger {
 
     public FileLogger() {
         try {
-            this.fileWriter = new FileWriter("text.txt");
+            this.fileWriter = new FileWriter("text.txt", true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -20,6 +20,12 @@ public class FileLogger implements Logger {
 
     @Override
     public void log(String message) {
+        try {
+            fileWriter.write(message);
+        } catch (IOException e) {
+            System.out.println("Unable to write to file");
+            e.printStackTrace();
+        }
         System.out.println(message);
     }
 }
